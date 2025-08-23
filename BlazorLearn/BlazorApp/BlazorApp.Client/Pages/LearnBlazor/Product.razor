@@ -23,6 +23,12 @@ Product Properties:
 </select>
 <br />
 Selected Property: @selectedProp
+<br />
+@if (!string.IsNullOrEmpty(selectedProp))
+{
+    <p>Selected value: @product.ProductProperties.FirstOrDefault(u=>u.Key == selectedProp).Value</p>
+}
+ 
 @code {
 
     private string selectedProp = string.Empty;
