@@ -1,4 +1,4 @@
-﻿namespace BlazorApp.Models
+﻿namespace Blazor.Model.LearnBlazor
 {
     public class Product
     {

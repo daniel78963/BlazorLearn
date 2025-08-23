@@ -1,0 +1,31 @@
+﻿@page "/bindprop"
+
+<h3>Product - Data Binding</h3>
+
+Name: @product.Name
+<br />
+Price: @product.Price.ToString("C")
+<br />
+Description: @product.Description
+<br />
+Active: @(product.IsActive ? "Yes" : "No")
+<br />
+Input Price:
+<input type="number" @bind-value="@product.Price" @bind-value:event="oninput" />
+
+
+@code {
+    Models.Product product = new Models.Product
+    {
+        Name = "Sample Product",
+        Price = 19.99m,
+        Description = "This is a sample product description.",
+        IsActive = true,
+        ProductProperties = new List<Models.Product_Prop>
+        {
+            new Models.Product_Prop { Id = 1, Key = "Color", Value = "Red" },
+            new Models.Product_Prop { Id=2, Key = "Size", Value = "Medium" },
+            new Models.Product_Prop { Id=3, Key = "Flavor", Value = "Rose" }
+        }
+    };
+}
