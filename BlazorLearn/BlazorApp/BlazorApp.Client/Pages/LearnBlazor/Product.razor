@@ -15,14 +15,17 @@ Input Price:
 <input type="number" @bind-value="@product.Price" @bind-value:event="oninput" />
 <br />
 Product Properties:
-<select>
+<select @bind="selectedProp">
     @foreach (var prop in product.ProductProperties)
     {
-        <option value="@prop.Id">@prop.Key - @prop.Value</option>
+        <option value="@prop.Key">@prop.Key - @prop.Value</option>
     }
 </select>
-
+<br />
+Selected Property: @selectedProp
 @code {
+
+    private string selectedProp = string.Empty;
 
     Blazor.Model.LearnBlazor.Product product = new Blazor.Model.LearnBlazor.Product
     {
