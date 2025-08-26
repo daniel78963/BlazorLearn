@@ -28,7 +28,7 @@
         Price: @product.Price.ToString("C")
         <br />
         Description: @product.Description
-        <br /> 
+        <br />
         Selected Property: @selectedProp
         <br />
         @if (!string.IsNullOrEmpty(selectedProp))
@@ -36,9 +36,42 @@
             <p>Selected value: @product.ProductProperties.FirstOrDefault(u => u.Key == selectedProp).Value</p>
         }
     </div>
+    <div class="col-12 p-4">
+        <h2 class="text-success">Product List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Is Active</th>
+                    @* <th>Properties</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in products)
+                {
+                    <tr>
+                        <td><input type="text" @bind="p.Name" @bind:event="oninput" /></td>
+                        <td><input type="text" @bind="p.Price" @bind:event="oninput" /></td>
+                        <td><input type="checkbox" @bind="p.IsActive" /></td> 
+                       @*  <td>@p.Price.ToString("C")</td>
+                        <td>@(p.IsActive ? "Active" : "Inactive")</td>
+                        <td>
+                            <ul>
+                                @foreach (var prop in p.ProductProperties)
+                                {
+                                    <li>@prop.Key: @prop.Value</li>
+                                }
+                            </ul>
+                        </td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
- 
+
 @code {
 
     private string selectedProp = string.Empty;
@@ -60,8 +93,8 @@
     List<Blazor.Model.LearnBlazor.Product> products = new List<Blazor.Model.LearnBlazor.Product>();
 
     protected override void OnInitialized()
-    { 
-        products.Add(new  Blazor.Model.LearnBlazor.Product()
+    {
+        products.Add(new Blazor.Model.LearnBlazor.Product()
         {
             Id = 1,
             Name = "Midnight Blaze",
