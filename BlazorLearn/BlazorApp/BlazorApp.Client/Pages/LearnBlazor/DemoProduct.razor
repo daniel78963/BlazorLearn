@@ -1,4 +1,5 @@
 ﻿@page "/learnBlazor/demoProduct" 
+@rendermode InteractiveAuto
 
 <h2 class="text-primary">Demo Product</h2>
 <div class="p-2 mt-2">
@@ -9,7 +10,7 @@
                 <h4 class="text-secondary">Product - @prod.Id</h4>
                 Name - @prod.Name <br />
                 Show Properties:
-                <input type="checkbox" @bind="@prod.IsActive" />
+                <input type="checkbox" @bind="prod.IsActive" />
 
                 @if(prod.IsActive)
                 {
@@ -23,9 +24,15 @@
             </div>
         }
     </div>
+    <div class="row pt-4"> 
+        <input type="button" class="btn btn-success" style="width:100px" value="Counter" @onclick="IncrementCount" /><br />
+        Counter: @Count <br />
+    </div>
 </div>
 
 @code {
+    public int Count { get; set; } = 0;
+
     List<Blazor.Model.LearnBlazor.Product> products = new List<Blazor.Model.LearnBlazor.Product>();
 
     protected override void OnInitialized()
@@ -57,5 +64,10 @@
                     new Product_Prop {Id = 3,Key = "Color",Value = "White"}
                 }
         });
+    }
+
+    private void IncrementCount()
+    {
+        Count++;
     }
 }
