@@ -1,5 +1,10 @@
-﻿<input type="button" class="btn btn-danger" style="width:100px" value="Delete" />
-
+﻿<input type="button" class="btn btn-danger" style="width:100px" value="Delete - @Id" />
+@* <br />
+@ProductName *@
 @code {
+    [Parameter]
+    public int Id { get; set; }
 
+    [Parameter]
+    public string ProductName { get; set; } = string.Empty;
 }
