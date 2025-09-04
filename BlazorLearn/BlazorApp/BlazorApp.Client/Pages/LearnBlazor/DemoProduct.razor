@@ -1,4 +1,4 @@
-﻿@page "/learnBlazor/demoProduct" 
+﻿@page "/learnBlazor/demoProduct"
 @rendermode InteractiveAuto
 
 <h2 class="text-primary">Demo Product</h2>
@@ -6,7 +6,8 @@
     <div class="row">
         @foreach (var prod in products)
         {
-            <div class="bg-light border col-6">
+            <_IndividualProduct Product="prod"></_IndividualProduct>
+            @* <div class="bg-light border col-6">
                 <h4 class="text-secondary">Product - @prod.Id</h4>
                 Name - @prod.Name <br />
                 Show Properties:
@@ -20,14 +21,14 @@
                     }
                 }
                 <br />
-                @* <input type="button" class="btn btn-danger" style="width:100px" value="Delete" @onclick="()=>RemoveProduct(prod.Id)" /> *@
+                <input type="button" class="btn btn-danger" style="width:100px" value="Delete" @onclick="()=>RemoveProduct(prod.Id)" />
                 <_DeleteButtonComponent Id="@prod.Id" ProductName="@prod.Name">
 
                 </_DeleteButtonComponent>
-            </div>
+            </div> *@
         }
     </div>
-    <div class="row pt-4"> 
+    <div class="row pt-4">
         <input type="button" class="btn btn-success" style="width:100px" value="Counter" @onclick="() => IncrementCount(5)" /><br />
         Counter: @Count <br />
     </div>
@@ -71,7 +72,7 @@
 
     private void IncrementCount(int increment)
     {
-        Count+= increment;
+        Count += increment;
     }
 
     // private void RemoveProduct(int id)
