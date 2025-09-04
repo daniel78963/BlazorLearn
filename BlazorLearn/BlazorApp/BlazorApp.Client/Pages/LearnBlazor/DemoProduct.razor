@@ -20,7 +20,10 @@
                     }
                 }
                 <br />
-                <input type="button" class="btn btn-danger" style="width:100px" value="Delete" @onclick="()=>RemoveProduct(prod.Id)" />
+                @* <input type="button" class="btn btn-danger" style="width:100px" value="Delete" @onclick="()=>RemoveProduct(prod.Id)" /> *@
+                <_DeleteButtonComponent>
+
+                </_DeleteButtonComponent>
             </div>
         }
     </div>
@@ -71,12 +74,12 @@
         Count+= increment;
     }
 
-    private void RemoveProduct(int id)
-    {
-        var prod = products.FirstOrDefault(p => p.Id == id);
-        if (prod != null)
-        {
-            products.Remove(prod);
-        }
-    }
+    // private void RemoveProduct(int id)
+    // {
+    //     var prod = products.FirstOrDefault(p => p.Id == id);
+    //     if (prod != null)
+    //     {
+    //         products.Remove(prod);
+    //     }
+    // }
 }
