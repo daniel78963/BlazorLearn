@@ -3,11 +3,12 @@
 
 <h2 class="text-primary">Demo Product</h2>
 <p>Product Count: @FavoriteCount</p>
+<p>Selected Product: @SelectedProduct</p>
 <div class="p-2 mt-2">
     <div class="row">
         @foreach (var prod in products)
         {
-            <_IndividualProduct Product="prod" OnFavoriteUpdated="FavoriteCountChanged"></_IndividualProduct>
+            <_IndividualProduct Product="prod" OnFavoriteUpdated="FavoriteCountChanged" OnSelectedProductChange="UpdateSelectedProduct"></_IndividualProduct>
             @* <div class="bg-light border col-6">
                 <h4 class="text-secondary">Product - @prod.Id</h4>
                 Name - @prod.Name <br />
@@ -38,6 +39,7 @@
 @code {
     public int Count { get; set; } = 0;
     public int FavoriteCount { get; set; } = 0;
+    public string SelectedProduct { get; set; } = string.Empty;
 
     List<Blazor.Model.LearnBlazor.Product> products = new List<Blazor.Model.LearnBlazor.Product>();
 
@@ -96,5 +98,10 @@
         {
             FavoriteCount--;
         }
+    }
+
+    protected void UpdateSelectedProduct(string productName)
+    {
+        SelectedProduct = productName;
     }
 }
