@@ -2,6 +2,7 @@
 @rendermode InteractiveAuto
 
 <h2 class="text-primary">Demo Product</h2>
+<p>Product Count: @FavoriteCount</p>
 <div class="p-2 mt-2">
     <div class="row">
         @foreach (var prod in products)
@@ -36,6 +37,7 @@
 
 @code {
     public int Count { get; set; } = 0;
+    public int FavoriteCount { get; set; } = 0;
 
     List<Blazor.Model.LearnBlazor.Product> products = new List<Blazor.Model.LearnBlazor.Product>();
 
@@ -83,4 +85,16 @@
     //         products.Remove(prod);
     //     }
     // }
+
+    protected void FavoriteCountChanged(bool isSelected)
+    {
+        if (isSelected)
+        {
+            FavoriteCount++;
+        }
+        else
+        {
+            FavoriteCount--;
+        }
+    }
 }
