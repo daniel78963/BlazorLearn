@@ -7,7 +7,7 @@
     <div class="row">
         @foreach (var prod in products)
         {
-            <_IndividualProduct Product="prod"></_IndividualProduct>
+            <_IndividualProduct Product="prod" OnFavoriteUpdated="FavoriteCountChanged"></_IndividualProduct>
             @* <div class="bg-light border col-6">
                 <h4 class="text-secondary">Product - @prod.Id</h4>
                 Name - @prod.Name <br />
