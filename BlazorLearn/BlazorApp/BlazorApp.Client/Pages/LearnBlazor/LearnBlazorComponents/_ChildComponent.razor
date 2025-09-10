@@ -2,12 +2,13 @@
     <div class="alert alert-info">
         @Title
     </div>
-    @if (ChildContent != null))
+    @if (ChildContent != null)
     {
         <div class="alert alert-success">
             @ChildContent
         </div>
     }
+    <button class="btn btn-danger" @onclick="OnButtonClick">Click me!</button>
 </dev>
 
 @code {
@@ -16,4 +17,7 @@
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnButtonClick { get; set; }
 }
