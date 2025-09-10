@@ -2,9 +2,16 @@
     <div class="alert alert-info">
         @Title
     </div>
-    @if (ChildContent != null)
+    @if (ChildSomeContent != null)
     {
         <div class="alert alert-success">
+            @ChildSomeContent 
+        </div>
+    }
+
+    @if (ChildContent != null)
+    {
+        <div class="alert alert-success"> 
             @ChildContent
         </div>
     }
@@ -14,6 +21,12 @@
 @code {
     [Parameter]
     public string? Title { get; set; }
+
+    // [Parameter]
+    // public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildSomeContent { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

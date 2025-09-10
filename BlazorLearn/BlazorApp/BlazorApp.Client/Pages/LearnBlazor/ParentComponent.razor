@@ -1,14 +1,19 @@
 ﻿@page "/learnBlazor/parentComponent"
 
 <h3>Parent Component</h3>
- 
-<_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage" >
-    <p>This is some content passed from the Parent Component to the Child Component.</p>
+
+<_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage">
+    <ChildSomeContent> <p>This is some content passed from the Parent Component to the Child Component.</p></ChildSomeContent>
+    <ChildContent>
+        <p>Some text inside the ChildContent from parent component</p>
+        <br />
+        <p class="text-primary">Some other text</p>
+    </ChildContent>
 </_ChildComponent>
 
 <p>@MessageText</p>
 
-<_ChildComponent Title="Hello from Parent Component!"> 
+<_ChildComponent Title="Hello from Parent Component!">
 </_ChildComponent>
 
 @code {
