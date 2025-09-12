@@ -2,7 +2,8 @@
 
 <h3>Parent Component</h3>
 
-<_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage">
+<_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage"
+                 MessageForGrandChild="Hello from Father Component to Grand Child!">
     <ChildSomeContent> <p>This is some content passed from the Parent Component to the Child Component.</p></ChildSomeContent>
     <ChildContent>
         <p>Some text inside the ChildContent from parent component</p>
@@ -13,8 +14,8 @@
 
 <p>@MessageText</p>
 
-<_ChildComponent Title="Hello from Parent Component!">
-</_ChildComponent>
+@* <_ChildComponent Title="Hello from Parent Component!">
+</_ChildComponent> *@
 
 @code {
     public string? MessageText { get; set; } = string.Empty;

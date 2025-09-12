@@ -5,17 +5,20 @@
     @if (ChildSomeContent != null)
     {
         <div class="alert alert-success">
-            @ChildSomeContent 
+            @ChildSomeContent
         </div>
     }
 
     @if (ChildContent != null)
     {
-        <div class="alert alert-success"> 
+        <div class="alert alert-success">
             @ChildContent
         </div>
     }
     <button class="btn btn-danger" @onclick="OnButtonClick">Click me!</button>
+
+    @* <_GrandChildComponent MessageForGrandChild="Hello from Child Component!" /> *@
+    <_GrandChildComponent MessageForGrandChild="@MessageForGrandChild" />  
 </dev>
 
 @code {
@@ -33,4 +36,7 @@
 
     [Parameter]
     public EventCallback OnButtonClick { get; set; }
+
+    [Parameter]
+    public string? MessageForGrandChild { get; set; }
 }
