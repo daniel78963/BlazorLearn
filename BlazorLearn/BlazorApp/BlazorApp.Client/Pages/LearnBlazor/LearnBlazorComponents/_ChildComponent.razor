@@ -18,7 +18,9 @@
     <button class="btn btn-danger" @onclick="OnButtonClick">Click me!</button>
 
     @* <_GrandChildComponent MessageForGrandChild="Hello from Child Component!" /> *@
-    <_GrandChildComponent MessageForGrandChild="@MessageForGrandChild" />  
+    @*  <_GrandChildComponent MessageForGrandChild="@MessageForGrandChild" /> *@  
+   Cascading value example:
+    <_GrandChildComponent />
 </dev>
 
 @code {

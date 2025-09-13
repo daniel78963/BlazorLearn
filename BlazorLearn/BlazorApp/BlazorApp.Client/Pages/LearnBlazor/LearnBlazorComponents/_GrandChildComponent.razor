@@ -6,6 +6,8 @@
 
 
 @code {
-    [Parameter]
+    // [Parameter]
+    // public string? MessageForGrandChild { get; set; }
+    [CascadingParameter]
     public string? MessageForGrandChild { get; set; }
 }

@@ -2,7 +2,7 @@
 
 <h3>Parent Component</h3>
 
-<_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage"
+@* <_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage"
                  MessageForGrandChild="Hello from Father Component to Grand Child!">
     <ChildSomeContent> <p>This is some content passed from the Parent Component to the Child Component.</p></ChildSomeContent>
     <ChildContent>
@@ -10,7 +10,17 @@
         <br />
         <p class="text-primary">Some other text</p>
     </ChildContent>
-</_ChildComponent>
+</_ChildComponent> *@
+<CascadingValue Value="@MessageForGrandChild">
+    <_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage" >
+        <ChildSomeContent> <p>This is some content passed from the Parent Component to the Child Component.</p></ChildSomeContent>
+        <ChildContent>
+            <p>Some text inside the ChildContent from parent component</p>
+            <br />
+            <p class="text-primary">Some other text</p>
+        </ChildContent>
+    </_ChildComponent>
+</CascadingValue>
 
 <p>@MessageText</p>
 
@@ -19,6 +29,7 @@
 
 @code {
     public string? MessageText { get; set; } = string.Empty;
+    private string MessageForGrandChild { get; set; } = "Hello from Father Component to Grand Child!";
 
     private void ShowMessage()
     {
