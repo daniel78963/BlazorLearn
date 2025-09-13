@@ -11,15 +11,17 @@
         <p class="text-primary">Some other text</p>
     </ChildContent>
 </_ChildComponent> *@
-<CascadingValue Value="@MessageForGrandChild">
-    <_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage" >
-        <ChildSomeContent> <p>This is some content passed from the Parent Component to the Child Component.</p></ChildSomeContent>
-        <ChildContent>
-            <p>Some text inside the ChildContent from parent component</p>
-            <br />
-            <p class="text-primary">Some other text</p>
-        </ChildContent>
-    </_ChildComponent>
+<CascadingValue Value="@MessageForGrandChild" Name="Message">
+    <CascadingValue Value="@LuckyNumber" Name="LuckyNumber">
+        <_ChildComponent Title="Hello from Parent Component!" OnButtonClick="ShowMessage">
+            <ChildSomeContent> <p>This is some content passed from the Parent Component to the Child Component.</p></ChildSomeContent>
+            <ChildContent>
+                <p>Some text inside the ChildContent from parent component</p>
+                <br />
+                <p class="text-primary">Some other text</p>
+            </ChildContent>
+        </_ChildComponent>
+    </CascadingValue>
 </CascadingValue>
 
 <p>@MessageText</p>
@@ -30,6 +32,7 @@
 @code {
     public string? MessageText { get; set; } = string.Empty;
     private string MessageForGrandChild { get; set; } = "Hello from Father Component to Grand Child!";
+    private int LuckyNumber { get; set; } = 7;
 
     private void ShowMessage()
     {
