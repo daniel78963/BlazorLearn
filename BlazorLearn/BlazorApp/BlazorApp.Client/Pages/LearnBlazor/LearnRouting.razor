@@ -16,6 +16,7 @@
 <p>Page Parameters value: @PageParameters</p>
 
 <a href="learnBlazor/learnRouting?Param1=777&Param2=LearnBlazor" class="btn btn-primary">Navigate to query parameter</a>
+<button @onclick="NavigateToQueryParam" class="btn btn-primary" >Navigate to query parameter NAV</button>
 <button class="btn btn-success" @onclick="LoadParameters">Load Parameters</button>
 <br />
 
@@ -52,5 +53,12 @@
         {
             Param2 = param2;
         }
+    }
+
+    private void NavigateToQueryParam()
+    {
+        //some logic
+
+        _NavigationManager.NavigateTo("learnBlazor/learnRouting?Param1=555&Param2=FromButton");
     }
 }
