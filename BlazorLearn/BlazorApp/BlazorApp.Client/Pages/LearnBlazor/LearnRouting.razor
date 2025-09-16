@@ -16,7 +16,7 @@
 <p>Page Parameters value: @PageParameters</p>
 
 <a href="learnBlazor/learnRouting?Param1=777&Param2=LearnBlazor" class="btn btn-primary">Navigate to query parameter</a>
-<button @onclick="NavigateToQueryParam" class="btn btn-primary" >Navigate to query parameter NAV</button>
+<button @onclick="NavigateToQueryParam" class="btn btn-primary">Navigate to query parameter NAV</button>
 <button class="btn btn-success" @onclick="LoadParameters">Load Parameters</button>
 <br />
 
@@ -44,7 +44,7 @@
 
         var uri = new Uri(_NavigationManager.Uri);
         var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
-       
+
         if (Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("Param1", out var param1))
         {
             Param1 = int.Parse(param1);
@@ -53,6 +53,11 @@
         {
             Param2 = param2;
         }
+
+        //force reload example
+        // _NavigationManager.NavigateTo(_NavigationManager.Uri, forceLoad: true);
+        // _NavigationManager.NavigateTo("learnBlazor/learnRouting?Param1=444&Param2=ForceRefresh", forceLoad: true);
+        _NavigationManager.Refresh(forceReload: true);
     }
 
     private void NavigateToQueryParam()
