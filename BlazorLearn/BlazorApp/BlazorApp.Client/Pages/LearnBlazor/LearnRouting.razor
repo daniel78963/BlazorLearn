@@ -35,15 +35,15 @@
     {
         // var uri = _NavigationManager.ToAbsoluteUri(_NavigationManager.Uri);
         // var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
-
-        var uri = new Uri(_NavigationManager.Uri);
-        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
         // Param1 = int.Parse(query["Param1"]);
         // Param2 = query["Param2"];
 
         // Param1 = 888;
-        // Param2 = "Test"; 
+        // Param2 = "Test";
 
+        var uri = new Uri(_NavigationManager.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+       
         if (Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("Param1", out var param1))
         {
             Param1 = int.Parse(param1);
