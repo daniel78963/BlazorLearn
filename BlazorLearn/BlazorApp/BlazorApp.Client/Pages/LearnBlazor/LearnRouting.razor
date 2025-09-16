@@ -4,23 +4,53 @@
 @page "/learnBlazor/learnRoutingExample"
 @page "/learnBlazor/learnRouting/catch-all/{*PageParameters}"
 @page "/learnBlazor/learnRouting/learnBlaz"
+@rendermode InteractiveAuto
 
+@inject NavigationManager _NavigationManager
 
 <h3>Learn Routing</h3>
 
-<p>Parameter 1 value: @Param1</p><br />
+<p>Parameter 1 value: @Param1</p>
+<br />
 <p>Parameter 2 value: @Param2</p>
 <p>Page Parameters value: @PageParameters</p>
+
+<a href="learnBlazor/learnRouting?Param1=777&Param2=LearnBlazor" class="btn btn-primary">Navigate to query parameter</a>
+<button class="btn btn-success" @onclick="LoadParameters">Load Parameters</button>
+<br />
 
 <div class="bg-info" style="height: 1000px">
 </div>
 <h2 id="targetElement">Main Title</h2>
 
 @code {
-    [Parameter] 
+    [Parameter]
     public int Param1 { get; set; }
     [Parameter]
     public string? Param2 { get; set; }
     [Parameter]
     public string? PageParameters { get; set; }
+
+    private void LoadParameters()
+    {
+        // var uri = _NavigationManager.ToAbsoluteUri(_NavigationManager.Uri);
+        // var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        var uri = new Uri(_NavigationManager.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+        // Param1 = int.Parse(query["Param1"]);
+        // Param2 = query["Param2"];
+
+        // Param1 = 888;
+        // Param2 = "Test"; 
+
+        if (Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("Param1", out var param1))
+        {
+            Param1 = int.Parse(param1);
+        }
+        if (Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query).TryGetValue("Param2", out var param2))
+        {
+            Param2 = param2;
+        }
+    }
 }
