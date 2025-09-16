@@ -1,6 +1,6 @@
 ﻿@page "/learnBlazor/learnRouting"
-@page "/learnBlazor/learnRouting/{Param1:int}"
-@page "/learnBlazor/learnRouting/{Param1:int}/{Param2}"
+@* @page "/learnBlazor/learnRouting/{Param1:int}"
+@page "/learnBlazor/learnRouting/{Param1:int}/{Param2}" *@
 @page "/learnBlazor/learnRoutingExample"
 @page "/learnBlazor/learnRouting/catch-all/{*PageParameters}"
 @page "/learnBlazor/learnRouting/learnBlaz"
@@ -25,10 +25,17 @@
 <h2 id="targetElement">Main Title</h2>
 
 @code {
-    [Parameter]
+    // [Parameter]
+    // public int Param1 { get; set; }
+    // [Parameter]
+    // public string? Param2 { get; set; }
+
+    [SupplyParameterFromQuery(Name = "Param1")]
     public int Param1 { get; set; }
-    [Parameter]
+    [SupplyParameterFromQuery(Name = "Param2")]
     public string? Param2 { get; set; }
+
+
     [Parameter]
     public string? PageParameters { get; set; }
 
@@ -54,10 +61,10 @@
             Param2 = param2;
         }
 
-        //force reload example
-        // _NavigationManager.NavigateTo(_NavigationManager.Uri, forceLoad: true);
-        // _NavigationManager.NavigateTo("learnBlazor/learnRouting?Param1=444&Param2=ForceRefresh", forceLoad: true);
-        _NavigationManager.Refresh(forceReload: true);
+        // //force reload example
+        // // _NavigationManager.NavigateTo(_NavigationManager.Uri, forceLoad: true);
+        // // _NavigationManager.NavigateTo("learnBlazor/learnRouting?Param1=444&Param2=ForceRefresh", forceLoad: true);
+        // _NavigationManager.Refresh(forceReload: true);
     }
 
     private void NavigateToQueryParam()
