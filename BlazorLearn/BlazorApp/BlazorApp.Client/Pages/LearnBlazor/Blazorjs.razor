@@ -54,11 +54,13 @@
 
     private async Task ShowSweetAlertSuccess()
     {
-        await JSRuntime.InvokeVoidAsync("ShowSwal", "success", "Task Completed!", "Success");
+        // await JSRuntime.InvokeVoidAsync("ShowSwal", "success", "Task Completed!", "Success");
+        await JSRuntime.InvokeVoidAsync("ShowSwal", "success", "Task Completed!");
     }
 
     private async Task ShowSweetAlertError()
     {
-        await JSRuntime.InvokeVoidAsync("ShowSwal", "error", "Task Failed!", "Error");
+        // await JSRuntime.InvokeVoidAsync("ShowSwal", "error", "Task Failed!", "Error");
+        await JSRuntime.InvokeVoidAsync("showSwal2", "error", "Task Failed!");
     }
 }
