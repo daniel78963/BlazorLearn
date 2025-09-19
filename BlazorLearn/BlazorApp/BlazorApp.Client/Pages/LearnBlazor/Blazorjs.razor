@@ -20,8 +20,13 @@
 </div>
 
 <div class="row">
-    <button class="btn btn-success" @onclick="ShowToastrSuccess">Toastr success</button>
-    <button class="btn btn-danger" @onclick="ShowToastrError">Toastr failure</button>
+    <button class="btn btn-success m-2" style="width: 200px" @onclick="ShowToastrSuccess">Toastr success</button>
+    <button class="btn btn-danger m-2" style="width: 200px" @onclick="ShowToastrError">Toastr failure</button>
+</div>
+
+<div class="row">
+    <button class="btn btn-success m-2" style="width: 200px" @onclick="ShowSweetAlertSuccess">SweetAlert success</button>
+    <button class="btn btn-danger m-2" style="width: 200px" @onclick="ShowSweetAlertError">SweetAlert failure</button>
 </div>
 
 @code {
@@ -45,5 +50,15 @@
     {
         // await JSRuntime.InvokeVoidAsync("showToastr", "error", "This is a error message!", "error");
         await JSRuntime.ToastrError("This is a error message with extension!");
+    }
+
+    private async Task ShowSweetAlertSuccess()
+    {
+        await JSRuntime.InvokeVoidAsync("ShowSwal", "success", "Task Completed!", "Success");
+    }
+
+    private async Task ShowSweetAlertError()
+    {
+        await JSRuntime.InvokeVoidAsync("ShowSwal", "error", "Task Failed!", "Error");
     }
 }
