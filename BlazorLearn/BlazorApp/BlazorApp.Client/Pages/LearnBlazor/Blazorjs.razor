@@ -36,7 +36,8 @@
 
     private async Task ShowToastrSuccess()
     {
-        await JSRuntime.InvokeVoidAsync("showToastr", "success", "This is a success message!", "success");
+        // await JSRuntime.InvokeVoidAsync("showToastr", "success", "This is a success message!", "success");
+        await JSRuntime.ToastrSuccess(""This is a success message!");
     }
 
     private async Task ShowToastrError()
