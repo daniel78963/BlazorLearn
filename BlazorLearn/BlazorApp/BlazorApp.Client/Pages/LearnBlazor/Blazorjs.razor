@@ -37,11 +37,13 @@
     private async Task ShowToastrSuccess()
     {
         // await JSRuntime.InvokeVoidAsync("showToastr", "success", "This is a success message!", "success");
-        await JSRuntime.ToastrSuccess(""This is a success message!");
+        await JSRuntime.ToastrSuccess("This is a success message with extension!");
+        // IJSRuntimeExtensions.ToastrSuccess 
     }
 
     private async Task ShowToastrError()
     {
-        await JSRuntime.InvokeVoidAsync("showToastr", "error", "This is a error message!", "error");
+        // await JSRuntime.InvokeVoidAsync("showToastr", "error", "This is a error message!", "error");
+        await JSRuntime.ToastrError("This is a error message with extension!");
     }
 }
