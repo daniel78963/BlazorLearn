@@ -58,8 +58,8 @@ window.showSwal2 = function (type, message, title) {
     }
     if (type == "error") {
         Swal.fire({
-            title: 'Error!',
-            text: 'Do you want to continue',
+            title: 'Task Failed!',
+            text: 'Something is not valid',
             icon: 'error',
             confirmButtonText: 'Cool'
         })

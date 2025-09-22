@@ -1,4 +1,6 @@
-﻿<dev>
+﻿@inject IJSRuntime _JSRuntime
+
+<dev>
     <div class="alert alert-info">
         @Title
     </div>
@@ -41,4 +43,10 @@
 
     [Parameter]
     public string? MessageForGrandChild { get; set; }
+
+    private async Task ShowToastrSuccess()
+    { 
+        await _JSRuntime.ToastrSuccess("This is a success message with extension!"); 
+    }
+
 }
