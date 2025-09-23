@@ -10,7 +10,7 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 <div class="border">
-    <_LifeCycleChildComponent></_LifeCycleChildComponent>
+    <_LifeCycleChildComponent CountValue="@currentCount"></_LifeCycleChildComponent>
 </div>
 
 @foreach (var item in EventType)
