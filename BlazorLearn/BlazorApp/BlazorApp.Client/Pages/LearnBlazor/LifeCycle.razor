@@ -38,4 +38,15 @@
     {
         EventType.Add("OnInitialized is called");
     }
+
+    protected override void OnParametersSet()
+    {
+        EventType.Add("OnParametersSet is called");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Delay(1000);
+        EventType.Add("OnParametersSetAsync is called");
+    }
 }
