@@ -1,4 +1,5 @@
 ﻿@page "/learnBlazor/parentComponent"
+@rendermode InteractiveAuto
 
 <h3>Parent Component</h3>
 
@@ -27,14 +28,14 @@
 <p>@MessageText</p>
 
 <div class="row">
-    <button class="btn btn-success" @onclick="()=>childComp.ShowToastrSuccess()">Show SweetAlert</button>
+    <button class="btn btn-success" @onclick="()=>childComp.ToastrSuccess()">Show Toastr</button>
 </div>
-
+ 
 @* <_ChildComponent Title="Hello from Parent Component!">
 </_ChildComponent> *@
 
 @code {
-    private _ChildComponent? childComp;
+    private _ChildComponent childComp;
 
     public string? MessageText { get; set; } = string.Empty;
     private string MessageForGrandChild { get; set; } = "Hello from Father Component to Grand Child!";
@@ -44,4 +45,5 @@
     {
         MessageText = "Button clicked in Child Component!";
     }
+     
 }
