@@ -9,6 +9,10 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<div class="border">
+    <_LifeCycleChildComponent></_LifeCycleChildComponent>
+</div>
+
 @foreach (var item in EventType)
 {
     <p>@item</p>
@@ -22,5 +26,16 @@
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1000);
+        EventType.Add("OnInitializedAsync is called");
+    } 
+
+    protected override void OnInitialized()
+    {
+        EventType.Add("OnInitialized is called");
     }
 }
