@@ -49,4 +49,27 @@
         await Task.Delay(1000);
         EventType.Add("OnParametersSetAsync is called");
     }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        EventType.Add("OnAfterRender is called");
+        if (firstRender)
+        {
+            currentCount = 100;
+        }
+        else
+        {
+            currentCount = 200;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Task.Delay(1000);
+        if (firstRender)
+        {
+            EventType.Add("OnAfterRenderAsync is called");
+            StateHasChanged();
+        }
+    }
 }
