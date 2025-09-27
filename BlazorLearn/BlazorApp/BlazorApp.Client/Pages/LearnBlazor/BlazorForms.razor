@@ -11,7 +11,7 @@
     </div>
     <div class="mx-2 px-2">
         <form>
-            <EditForm FormName="ProductCreate" Model="Product" OnValidSubmit="HandleValidSubmit">
+            <EditForm FormName="ProductCreate" Model="Product" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInValidSubmit">
                 <DataAnnotationsValidator />
                 <ValidationSummary></ValidationSummary>
                 <div class="form-group py-2">
@@ -41,6 +41,13 @@
         await Task.Delay(3000); // Simulate a delay for processing
         // Handle the valid form submission here
         // await Task.CompletedTask;
+        IsProcessing = false;
+    }
+
+    private async Task HandleInValidSubmit()
+    {
+        IsProcessing = true;
+        await Task.Delay(9000);  
         IsProcessing = false;
     }
 }
