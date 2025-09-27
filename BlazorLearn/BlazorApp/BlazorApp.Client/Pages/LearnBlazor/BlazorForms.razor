@@ -9,12 +9,15 @@
     </div>
     <div class="mx-2 px-2">
         <form>
-            <EditForm FormName="ProductCreate" Model="Product"> 
-                <div class="form-group py-2"> 
+            <EditForm FormName="ProductCreate" Model="Product">
+                <div class="form-group py-2">
                     Product Name
                     <InputText class="form-control" @bind-Value="@Product.Name" />
-
+                    <button class="btn btn-primary my-3" type="submit" style="width: 200px;" onsubmit="HandleValidSubmit">
+                        Create Product
+                    </button>
                 </div>
+                <p class="text-success">@(IsProcessing == true ? "Processing...": "")</p>
             </EditForm>
         </form>
     </div>
@@ -22,4 +25,14 @@
 
 @code {
     public Blazor.Model.LearnBlazor.Product Product { get; set; } = new Blazor.Model.LearnBlazor.Product();
+    private bool IsProcessing { get; set; } = false;
+
+    private async Task HandleValidSubmit()
+    {
+        IsProcessing = true;
+        await Task.Delay(3000); // Simulate a delay for processing
+        // Handle the valid form submission here
+        // await Task.CompletedTask;
+        IsProcessing = false;
+    }
 }
