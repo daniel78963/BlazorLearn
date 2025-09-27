@@ -15,17 +15,17 @@ Input Price:
 
 
 @code {
-    Models.Product product = new Models.Product
+    Blazor.Model.LearnBlazor.Product product = new Blazor.Model.LearnBlazor.Product
     {
         Name = "Sample Product",
         Price = 19.99m,
         Description = "This is a sample product description.",
         IsActive = true,
-        ProductProperties = new List<Models.Product_Prop>
+        ProductProperties = new List<Blazor.Model.LearnBlazor.Product_Prop>
         {
-            new Models.Product_Prop { Id = 1, Key = "Color", Value = "Red" },
-            new Models.Product_Prop { Id=2, Key = "Size", Value = "Medium" },
-            new Models.Product_Prop { Id=3, Key = "Flavor", Value = "Rose" }
+            new Blazor.Model.LearnBlazor.Product_Prop { Id = 1, Key = "Color", Value = "Red" },
+            new Blazor.Model.LearnBlazor.Product_Prop { Id=2, Key = "Size", Value = "Medium" },
+            new Blazor.Model.LearnBlazor.Product_Prop { Id=3, Key = "Flavor", Value = "Rose" }
         }
     };
 }

@@ -1,5 +1,6 @@
 ﻿@page "/learnblazor/blazor-forms"
 @rendermode InteractiveAuto
+@using Blazor.Model.LearnBlazor
 
 <h3>Blazor Forms</h3>
 
@@ -10,8 +11,9 @@
     </div>
     <div class="mx-2 px-2">
         <form>
-            <EditForm FormName="ProductCreate" Model="Product" onsubmit="HandleValidSubmit">
+            <EditForm FormName="ProductCreate" Model="Product" OnValidSubmit="HandleValidSubmit">
                 <DataAnnotationsValidator />
+                <ValidationSummary></ValidationSummary>
                 <div class="form-group py-2">
                     Product Name
                     <InputText class="form-control" @bind-Value="@Product.Name" /> 
