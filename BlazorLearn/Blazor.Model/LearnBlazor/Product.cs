@@ -1,9 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace Blazor.Model.LearnBlazor
-{
+{     
     public class Product
     {
+        public Product()
+        {
+                AvailableAfter = DateOnly.FromDateTime(DateTime.Now.AddDays(7));
+        }
+
         public int Id { get; set; }
         [Required]
         public string Name { get; set; } = string.Empty;
