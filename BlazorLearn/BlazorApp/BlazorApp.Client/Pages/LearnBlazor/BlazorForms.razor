@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group py-2">
                     IsActive
-                    <InputCheckbox @bind-Value="@Product.IsActive" /> 
+                    <InputCheckbox @bind-Value="@Product.IsActive" />
                 </div>
                 <div class="form-group py-2">
                     Available After
@@ -46,6 +46,9 @@
                     Create Product
                 </button>
                 <p class="text-success">@(IsProcessing == true ? "Processing..." : "")</p>
+            </EditForm>
+
+            <EditForm FormName="ProductCreateTemp" Model="ProductTemp" OnValidSubmit="HandleValidSubmitTemp">
             </EditForm>
         </form>
     </div>
@@ -67,7 +70,11 @@
 </div>
 
 @code {
+    [SupplyParameterFromForm(FormName = "ProductCreate")]
     public Blazor.Model.LearnBlazor.Product Product { get; set; } = new Blazor.Model.LearnBlazor.Product();
+    [SupplyParameterFromForm(FormName = "ProductCreateTemp")]
+    public Blazor.Model.LearnBlazor.Product ProductTemp { get; set; } = new Blazor.Model.LearnBlazor.Product();
+
     public Blazor.Model.LearnBlazor.Product? createdProduct { get; set; } = null;
     private bool IsProcessing { get; set; } = false;
 
@@ -78,7 +85,20 @@
         await Task.Delay(3000); // Simulate a delay for processing
         createdProduct = Product;
         Product = new Blazor.Model.LearnBlazor.Product();
-        
+
+        // Handle the valid form submission here
+        // await Task.CompletedTask;
+        IsProcessing = false;
+    }
+
+    private async Task HandleValidSubmitTemp()
+    {
+        IsProcessing = true;
+        createdProduct = null;
+        await Task.Delay(3000); // Simulate a delay for processing
+        createdProduct = ProductTemp;
+        ProductTemp = new Blazor.Model.LearnBlazor.Product();
+
         // Handle the valid form submission here
         // await Task.CompletedTask;
         IsProcessing = false;
